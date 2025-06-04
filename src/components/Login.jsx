@@ -69,7 +69,7 @@ const Login = () => {
       <div className="card lg:card-side bg-base-100 shadow-sm w-1/2">
         <figure>
           <img
-            src="http://localhost:5173/src/assets/cassette.webp"
+            src="/src/assets/cassette.webp"
             alt="Album"
           />
         </figure>
