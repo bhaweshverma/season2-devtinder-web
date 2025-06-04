@@ -1,0 +1,129 @@
+React-devTinder
+
+Part 1
+Vite for project creation
+tailwindcss with vite
+daisyui with tailwindcss - Component Library for TailwindCSS - READ* (daisyUI is a plugin for Tailwind CSS)
+add navbar component from daisyui
+npm i react-router-dom for routing - 2 ways of doing either using the BrowserRouter component or creating the route using the browserrouter
+	<BrowserRouter basename="/">
+        	<Routes>
+          		<Route path="/" element={<div>Page</div>}>
+          			<Route path="/login" element={<div>Login Page</div>}></Route>
+          			<Route path="/test" element={<div>Test Page</div>}></Route>
+			</Route>
+        	</Routes>
+      	</BrowserRouter>
+
+<Outlet /> -any children route component of parent will render here - See code
+
+add header & footer components from daisyui
+
+Part 2
+// Login Page
+Design a login page using card & fields from daisyui
+install axios 
+handle api call to login
+fix cors error of localhost:5173 --> localhost:3000. Even though same domain but different ports which considered to be as different ports
+npm i cors - in nodejs project and use cors as middleware with options (details below) ** READ CORS Middleware in Express - Very important for Preflight, dynamic origins, etc. - https://expressjs.com/en/resources/middleware/cors.html 
+after successful login call, the token cookie not appearing in the browser's cookie section? Why? 
+	- whitelist the frontend source url & credentials:true in CORS option ** READ MORE
+	- withcredentials:true in axios call - tells browser to use the credentials 
+now the cookie should be saved in browser and subsequent calls will be able to use it
+Set up redux store - redux-toolkit.js.org/tutorials/quick-start
+	npm install @reduxjs/toolkit 
+	npm install react-redux
+store user data from login API's response
+after storing the user data to store, check in 'redux DevTools' extension of chrome browser
+set the logged-in-users photoURL from the user's store - https://media.licdn.com/dms/image/v2/D5635AQGdPIe1tpz1lA/profile-framedphoto-shrink_400_400/profile-framedphoto-shrink_400_400/0/1692683759774?e=1749038400&v=beta&t=JHYglDra-GCwCtci4aBZq5Xo4rpcF46i8byJbkmejn0
+add the Welcome, firstName along the photo
+// Feed page
+create Feed page and user should land on it after the login
+create utils --> constants for all constant like api url, etc.
+Move all components to components folder
+
+Part 3
+// handling authentication login, logout & refresh
+User should not be logged out on page refresh? - On refresh, state gets empty but you have valid token in browser. Using this token make a call again to fetch user details and keep logged-in the user. Maybe a api call on the page load using the token and save in store.
+It should only logout when there is no token in cookies or expired - try deleting the token and refresh again
+If not logged-in, no page should open by editing directly the url (wrong way of testing though as it will always make a API call) and must take to login page
+Fix Profile & Feed page 
+Testing:
+	if expired, move the user to login page
+	User should not be able to access any other page is logged out
+Logout - Token cookie should be removed from browser, user state should be null or removed (important as user will keep seeing the welcome message) & redirect the user to login
+Profile dummy
+
+// Error handling & validations on login page
+// Build Feed Page
+	add feedslice
+	build the user card on feed
+// Build Profile
+	Edit Profile Form
+		- First Name - text
+		- Last Name - text
+		- photoUrl - text or url
+		- Age - text
+		- Gender - dropdown
+		- About - Text Area
+	Prefill with logged-in user details
+	Add userCard to profile page to show it will look like on feed page
+	Save details
+	update the store
+	handle error & test with negative scenarios
+	successfully saved changes notification (daisyui - toast) after save and disappears after 3 secs
+
+Part 4
+// Build Connections Page
+	connection slice
+	see all the connections
+	
+// Build Requests Page
+	requests slice
+	see all the requests, if no request then show message of no requests found
+	add buttons to accept or reject the request
+	complete the functionality of both the buttons
+	try accepting/rejecting all the request for current user and see the connections updating side by side
+	after accepting or rejecting - card should appear away
+
+Part-5
+
+// Signup
+// Send Request
+// Testing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+	
+
